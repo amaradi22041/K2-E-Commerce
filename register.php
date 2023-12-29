@@ -54,7 +54,7 @@
                             include 'koneksi.php';
 
                             class User
-                            {   
+                            {
                                 private $koneksi;
 
                                 public function __construct($koneksi)
@@ -70,11 +70,11 @@
                                     $query = "INSERT INTO tb_user(fullname, email, password) VALUES ('$fullname', '$email', '$hashedPassword')";
                                     $sql = mysqli_query($this->koneksi, $query);
 
-                                    if($sql){
+                                    if ($sql) {
                                         header("location: login.php?success=1");
                                         exit();
-                                    }else{
-                                        echo "Error: ".$query."<br>".mysqli_error($this->koneksi);
+                                    } else {
+                                        echo "Error: " . $query . "<br>" . mysqli_error($this->koneksi);
                                     }
                                 }
                             }
@@ -86,11 +86,48 @@
                                 $username = $_GET['fullname'];
                                 $email = $_GET['email'];
                                 $password = $_GET['password'];
-                                
+
                                 $user->daftarAkun($username, $email, $password);
                             }
-                            ?>
 
+
+
+
+                            ?>
+                            <?php
+                            class Produk
+                            {
+                                public $nama;
+                                public $harga;
+                                public function __construct($nama, $harga)
+                                {
+                                    $this->nama = $nama;
+                                    $this->harga = $harga;
+                                }
+                                public function intro()
+                                {
+                                    echo "Nama Produk {$this->nama} harganya {$this->harga}.";
+                                }
+                            }
+
+                            class Kemeja extends Produk
+                            {
+                                public $berat;
+                                public function __construct($nama, $harga, $jenis)
+                                {
+                                    $this->nama = $nama;
+                                    $this->harga = $harga;
+                                    $this->jenis = $jenis;
+                                }
+                                public function intro()
+                                {
+                                    echo "Prduknya {$this->nama}, harganya {$this->harga}, Jenisnya {$this->jenis} .";
+                                }
+                            }
+
+                            $baju = new Kemeja("Kemeja1", 50, "Cotton");
+                            $strawberry->intro();
+                            ?>
                             <hr>
                         </div>
                     </div>
