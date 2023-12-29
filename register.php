@@ -99,11 +99,13 @@
                             {
                                 public $nama;
                                 public $harga;
+
                                 public function __construct($nama, $harga)
                                 {
                                     $this->nama = $nama;
                                     $this->harga = $harga;
                                 }
+
                                 public function intro()
                                 {
                                     echo "Nama Produk {$this->nama} harganya {$this->harga}.";
@@ -112,21 +114,28 @@
 
                             class Kemeja extends Produk
                             {
-                                public $berat;
+                                public $jenis;
+
                                 public function __construct($nama, $harga, $jenis)
                                 {
-                                    $this->nama = $nama;
-                                    $this->harga = $harga;
+                                    // Memanggil konstruktor kelas induk
+                                    parent::__construct($nama, $harga);
+
                                     $this->jenis = $jenis;
                                 }
+
+                                // Overriding metode intro dari kelas induk
                                 public function intro()
                                 {
-                                    echo "Prduknya {$this->nama}, harganya {$this->harga}, Jenisnya {$this->jenis} .";
+                                    echo "Produknya {$this->nama}, harganya {$this->harga}, Jenisnya {$this->jenis}.";
                                 }
                             }
 
+                            // Membuat objek kelas Kemeja
                             $baju = new Kemeja("Kemeja1", 50, "Cotton");
-                            $strawberry->intro();
+
+                            // Memanggil metode intro() dari objek kelas Kemeja
+                            $baju->intro();
                             ?>
                             <hr>
                         </div>
