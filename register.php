@@ -89,11 +89,8 @@
 
                                 $user->daftarAkun($username, $email, $password);
                             }
-
-
-
-
                             ?>
+
                             <?php
                             class Produk
                             {
@@ -118,23 +115,19 @@
 
                                 public function __construct($nama, $harga, $jenis)
                                 {
-                                    // Memanggil konstruktor kelas induk
                                     parent::__construct($nama, $harga);
 
                                     $this->jenis = $jenis;
                                 }
 
-                                // Overriding metode intro dari kelas induk
                                 public function intro()
                                 {
                                     echo "Produknya {$this->nama}, harganya {$this->harga}, Jenisnya {$this->jenis}.";
                                 }
                             }
 
-                            // Membuat objek kelas Kemeja
                             $baju = new Kemeja("Kemeja1", 50, "Cotton");
 
-                            // Memanggil metode intro() dari objek kelas Kemeja
                             $baju->intro();
                             ?>
                             <hr>
